@@ -1,0 +1,17 @@
+service: my-local-service
+provider:
+  name: aws
+  runtime: python3.8
+  stage: v1
+
+functions:
+  cancel:
+    handler: handler.cancel
+    events:
+      - http:
+          path: cancel   # La ruta debe coincidir con lo que estás accediendo
+          method: post   # O el método HTTP que estás utilizando
+
+
+plugins:
+  - serverless-offline
